@@ -15,3 +15,9 @@
     src: /usr/local/zookeeper-{{ zookeeper_version }}
     dest: /usr/local/zookeeper
     state: link
+- name: creates zookeeper config file
+  template:
+    src: config.j2
+    dest: /usr/local/zookeeper/conf/zoo.cfg
+    owner: root
+    group: root
