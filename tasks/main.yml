@@ -1,2 +1,17 @@
 ---
-# tasks file for zookeeper
+- name: creates ansible cache path
+  file: path="{{ ansible_cache_path }}" state=directory
+- name: downloads zookeeper
+  get_url:
+    url: http://mirror.cc.columbia.edu/pub/software/apache/zookeeper/zookeeper-{{ zookeeper_version }}/zookeeper-{{ zookeeper_version }}.tar.gz
+    dest: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}"
+- name: extracts zookeeper
+  unarchive:
+    src: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}"
+    dest: /usr/local
+    creates: /usr/local/zookeeper-{{ zookeeper_version }}
+- name: creates zookeeper link
+  file:
+    src: /usr/local/zookeeper-{{ zookeeper_version }}
+    dest: /usr/local/zookeeper
+    state: link

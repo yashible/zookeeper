@@ -1,2 +1,4 @@
 ---
-# defaults file for zookeeper
+ansible_cache_path: '/var/cache/ansible'
+zookeeper_version: '3.4.6'
+
