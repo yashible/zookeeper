@@ -4,10 +4,10 @@
 - name: downloads zookeeper
   get_url:
     url: http://mirror.cc.columbia.edu/pub/software/apache/zookeeper/zookeeper-{{ zookeeper_version }}/zookeeper-{{ zookeeper_version }}.tar.gz
-    dest: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}"
+    dest: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}.tar.gz"
 - name: extracts zookeeper
   unarchive:
-    src: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}"
+    src: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}.tar.gz"
     dest: /usr/local
     creates: /usr/local/zookeeper-{{ zookeeper_version }}
 - name: creates zookeeper link
