@@ -10,6 +10,7 @@
     src: "{{ ansible_cache_path }}/zookeeper-{{ zookeeper_version }}.tar.gz"
     dest: /usr/local
     creates: /usr/local/zookeeper-{{ zookeeper_version }}
+    copy: no
 - name: creates zookeeper link
   file:
     src: /usr/local/zookeeper-{{ zookeeper_version }}
